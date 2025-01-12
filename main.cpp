@@ -172,7 +172,8 @@ int main()
                             printf("Escolha a opção desejada do menu:\n\n"); // Solicita que o usuário escolha uma opção
                             printf("\t1- Registrar nomes\n"); // Opção 1: Registrar nomes
                             printf("\t2- Consultar nomes\n"); // Opção 2: Consultar nomes
-                            printf("\t3- Deletar nomes\n\n"); // Opção 3: Deletar nomes
+                            printf("\t3- Deletar nomes\n"); // Opção 3: Deletar nomes
+                            printf("\t4- Sair do sistema\n\n"); // Opção 4: Sair do sistema
                             printf("Opção: "); // Solicita ao usuário que digite uma opção
                             // Fim do menu
                         
@@ -193,6 +194,11 @@ int main()
                                 case 3: // Caso a opção escolhida seja 3
                                     deletar(); // Chama a função 'deletar' para excluir um usuário
                                     break; // Encerra o caso 3 e sai do switch
+                                
+                                case 4: // Caso a opção escolhida seja 4
+                                    printf("Obrigado por utilizar o sistema!\n"); // Exibe mensagem de encerramento
+                                    return 0; // Finaliza a função
+                                    break; // Encerra o caso 4 e sai do switch
                                     
                                 default: // Caso o usuário escolha uma opção que não esteja no menu
                                     printf("\nEssa opção não está disponível.\n"); // Exibe mensagem informando que a opção é inválida
