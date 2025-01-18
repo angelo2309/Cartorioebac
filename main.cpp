@@ -6,7 +6,6 @@
 int registro() // Função responsável por cadastrar os usuários no sistema
 
                 { // Início da int registro
-                    
                     // Início da criação de variáveis (strings)
                     char arquivo[40]; // Variável para armazenar o nome do arquivo (usando o CPF como nome)
                     char cpf[40]; // Variável para armazenar o CPF do usuário
@@ -154,60 +153,74 @@ int deletar()
                 } //Fim da int deletar
 
 int main()
-                { // Início da função principal (main)
+{ // Início da função principal (main)
     
-                    int opcao=0; // Declara uma variável para armazenar a opção escolhida pelo usuário
-                    int laço=1; // Declara uma variável para controlar o laço de repetição (não é usada no momento)
+    int opcao=0; // Declara uma variável para armazenar a opção escolhida pelo usuário
+    int laço=1; // Declara uma variável para controlar o laço de repetição (não é usada no momento)
+    char senhadigitada[11]; // Array de tamanho 11 (10 caracteres + terminador '\0')
+    
+    printf("### Cartório da EBAC ###");// Exibe o título do menu
+    printf("Login de administrador!\n\nDigite a sua senha: ");// Instrução para inserir senha
+    scanf("%s",senhadigitada); // Limita a entrada a 10 caracteres
+    
+    // Comparar a senha usando strcmp
+    if (strcmp(senhadigitada, "admin") == 0)
+    {
+        
+        // Laço de repetição infinito (para sempre) até o usuário escolher uma opção válida
+        for(laço=1;(laço=1);) //
+        { // Início do laço 'for', que vai continuar executando até ser interrompido manualmente ou até a execução do programa ser finalizada
+            
+            system("clear"); // Limpa a tela para começar o menu novamente, para melhorar a experiência do usuário
+            
+            setlocale(LC_ALL,"Portuguese"); // Define a linguagem
+            
+            // Início do menu de opções
+            printf("\n\n### Cartório da EBAC ###\n\n"); // Exibe o título do menu
+            printf("Escolha a opção desejada do menu:\n\n"); // Solicita que o usuário escolha uma opção
+            printf("\t1- Registrar nomes\n"); // Opção 1: Registrar nomes
+            printf("\t2- Consultar nomes\n"); // Opção 2: Consultar nomes
+            printf("\t3- Deletar nomes\n"); // Opção 3: Deletar nomes
+            printf("\t4- Sair do sistema\n\n"); // Opção 4: Sair do sistema
+            printf("Opção: "); // Solicita ao usuário que digite uma opção
+            // Fim do menu
+            
+            scanf("%d",&opcao); // Lê a opção escolhida pelo usuário e armazena na variável 'opcao'
+            
+            system("clear"); // Limpa a tela novamente para melhorar a apresentação do menu
+            
+            switch (opcao) // Início da estrutura de seleção para tratar as opções escolhidas pelo usuário
+            { // Começo do switch
+                case 1: // Caso a opção escolhida seja 1
+                    registro(); // Chama a função 'registro' para registrar um novo usuário
+                    break; // Encerra o caso 1 e sai do switch
                     
-                    // Laço de repetição infinito (para sempre) até o usuário escolher uma opção válida
-                    for(laço=1;(laço=1);) // Dúvida: O mac não deixa simplesmente não usar parentes no segundo laço, não sei qual o impacto.
-                        { // Início do laço 'for', que vai continuar executando até ser interrompido manualmente ou até a execução do programa ser finalizada
-                            
-                            system("clear"); // Limpa a tela para começar o menu novamente, para melhorar a experiência do usuário
-                            
-                            setlocale(LC_ALL,"Portuguese"); // Define a linguagem
-
-                            // Início do menu de opções
-                            printf("\n\n### Cartório da EBAC ###\n\n"); // Exibe o título do menu
-                            printf("Escolha a opção desejada do menu:\n\n"); // Solicita que o usuário escolha uma opção
-                            printf("\t1- Registrar nomes\n"); // Opção 1: Registrar nomes
-                            printf("\t2- Consultar nomes\n"); // Opção 2: Consultar nomes
-                            printf("\t3- Deletar nomes\n"); // Opção 3: Deletar nomes
-                            printf("\t4- Sair do sistema\n\n"); // Opção 4: Sair do sistema
-                            printf("Opção: "); // Solicita ao usuário que digite uma opção
-                            // Fim do menu
-                        
-                            scanf("%d",&opcao); // Lê a opção escolhida pelo usuário e armazena na variável 'opcao'
-                        
-                            system("clear"); // Limpa a tela novamente para melhorar a apresentação do menu
-                            
-                            switch (opcao) // Início da estrutura de seleção para tratar as opções escolhidas pelo usuário
-                            { // Começo do switch
-                                case 1: // Caso a opção escolhida seja 1
-                                    registro(); // Chama a função 'registro' para registrar um novo usuário
-                                    break; // Encerra o caso 1 e sai do switch
-                                    
-                                case 2: // Caso a opção escolhida seja 2
-                                    consulta(); // Chama a função 'consulta' para buscar informações de um usuário
-                                    break; // Encerra o caso 2 e sai do switch
-                                    
-                                case 3: // Caso a opção escolhida seja 3
-                                    deletar(); // Chama a função 'deletar' para excluir um usuário
-                                    break; // Encerra o caso 3 e sai do switch
-                                
-                                case 4: // Caso a opção escolhida seja 4
-                                    printf("Obrigado por utilizar o sistema!\n"); // Exibe mensagem de encerramento
-                                    return 0; // Finaliza a função
-                                    break; // Encerra o caso 4 e sai do switch
-                                    
-                                default: // Caso o usuário escolha uma opção que não esteja no menu
-                                    printf("\nEssa opção não está disponível.\n"); // Exibe mensagem informando que a opção é inválida
-                                    getchar(); // Captura o Enter residual no buffer
-                                    getchar(); // Aguarda o Enter do usuário
-                                    break; // Encerra o bloco 'default' e sai do switch
-                                    
-                            } // Fim do switch
-                        
-                        } // Fim do for
+                case 2: // Caso a opção escolhida seja 2
+                    consulta(); // Chama a função 'consulta' para buscar informações de um usuário
+                    break; // Encerra o caso 2 e sai do switch
                     
-                } // Fim da main
+                case 3: // Caso a opção escolhida seja 3
+                    deletar(); // Chama a função 'deletar' para excluir um usuário
+                    break; // Encerra o caso 3 e sai do switch
+                    
+                case 4: // Caso a opção escolhida seja 4
+                    printf("Obrigado por utilizar o sistema!\n"); // Exibe mensagem de encerramento
+                    return 0; // Finaliza a função
+                    break; // Encerra o caso 4 e sai do switch
+                    
+                default: // Caso o usuário escolha uma opção que não esteja no menu
+                    printf("\nEssa opção não está disponível.\n"); // Exibe mensagem informando que a opção é inválida
+                    getchar(); // Captura o Enter residual no buffer
+                    getchar(); // Aguarda o Enter do usuário
+                    break; // Encerra o bloco 'default' e sai do switch
+                    
+            } // Fim do switch
+            
+        } // Fim do for
+   
+    } // Fim da if
+    
+    else
+        printf("\nSenha Incorreta\n\n");
+    
+} // Fim da main
